@@ -11,13 +11,16 @@ app.setErrorHandler((error, request, reply) =>{
     reply.code(400).send({message: error.message})
 })
 
+
+const porta = process.env.PORT || 3333
+
 const start = async() => {
     app.register(cors);
     app.register(routes)
 
     try{
-        await app.listen({port: 3333, host:"0.0.0.0"})
-        console.log(`servidor rodando em http://localhost:3333/teste`)
+        await app.listen({port: porta, host:"0.0.0.0"})
+        console.log(`servidor rodando em http://26.171.198.149:3333/teste`)
     }catch(err){
         console.log(err)
     }
