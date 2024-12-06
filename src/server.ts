@@ -12,18 +12,18 @@ app.setErrorHandler((error, request, reply) =>{
 })
 
 
-const porta = process.env.PORT || 3333
+const porta = parseInt(process.env.PORT || "3333", 10); // Garantir que 'porta' seja sempre um número
 
-const start = async() => {
+const start = async () => {
     app.register(cors);
-    app.register(routes)
+    app.register(routes);
 
-    try{
-        await app.listen({port: porta, host:"0.0.0.0"})
-        console.log(`servidor rodando em http://26.171.198.149:3333/teste`)
-    }catch(err){
-        console.log(err)
+    try {
+        await app.listen({ port: porta, host: "0.0.0.0" });
+        console.log(`Servidor rodando em http://26.171.198.149:${porta}/teste`);
+    } catch (err) {
+        console.error(err);
     }
-}
+};
 
 start();
